@@ -33,10 +33,34 @@ describe(`alignWords`, function() {
 
   });
 
+  it(`groups words with [brackets]`, function() {
+
+    const lines = [
+      `waxdungu qasi [qapx cuyi]`,
+      `waxt-qungu qasi [qapx cuy-i]`,
+      `day-one man he.came`,
+    ];
+
+    const expectedResult = [
+      `waxdungu   qasi [qapx cuyi]`,
+      `waxt-qungu qasi [qapx cuy-i]`,
+      `day-one    man  he.came`,
+    ];
+
+    const aligned = alignWords(lines);
+
+    aligned.forEach((line, i) => {
+
+      expect(line).to.be(expectedResult[i]);
+
+    });
+
+  });
+
   it(`option: alignmentError`, function() {
 
     const lines = [
-      `waxdungu qasi qapx cuyi`,
+      `waxdungu qasi qap cuyi`,
       `waxt-qungu qasi`,
       `day-one man`,
     ];
