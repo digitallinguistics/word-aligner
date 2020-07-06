@@ -43,4 +43,10 @@ The value of the `aligned` variable will be:
 
 **Note:** _word-aligner_ does _not_ do automatic line detection. It will not know what type of line you are handing it (morphemes, glosses, translation, etc.). Only provide the lines you actually want aligned. Usually this means you will not provide a free translation line.
 
+## Options
+
+Option           | Default | Description
+-----------------|---------|-------------------------------------------------------------------------------------------------------
+`alignmentError` | `false` | Specifies whether the library should throw an error if all lines do not have the same number of words.
+
 [new-issue]: https://github.com/digitallinguistics/word-aligner/issues/new
