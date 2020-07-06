@@ -6,7 +6,8 @@ _word-aligner_ is a small JavaScript utility (Node / browser) for vertically ali
 [![npm](https://img.shields.io/npm/dt/@digitallinguistics/word-aligner)][npm]
 [![GitHub issues](https://img.shields.io/github/issues/digitallinguistics/word-aligner)][issues]
 [![test status](https://github.com/digitallinguistics/word-aligner/workflows/test/badge.svg)][actions]
-[![GitHub](https://img.shields.io/github/license/digitallinguistics/word-aligner)][license]
+[![DOI](https://zenodo.org/badge/277561856.svg)][Zenodo]
+[![license](https://img.shields.io/github/license/digitallinguistics/word-aligner)][license]
 [![GitHub stars](https://img.shields.io/github/stars/digitallinguistics/word-aligner?style=social)][GitHub]
 
 [Click here to open an issue on GitHub.][new-issue]
@@ -65,3 +66,4 @@ Option           | Default  | Description
 [new-issue]: https://github.com/digitallinguistics/word-aligner/issues/new
 [npm]:       https://www.npmjs.com/package/@digitallinguistics/word-aligner
 [releases]:  https://github.com/digitallinguistics/word-aligner/releases
+[Zenodo]:    https://zenodo.org/badge/latestdoi/277561856
