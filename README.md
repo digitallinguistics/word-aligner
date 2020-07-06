@@ -52,9 +52,10 @@ The value of the `aligned` variable will be:
 
 ## Options
 
-Option           | Default | Description
------------------|---------|-------------------------------------------------------------------------------------------------------
-`alignmentError` | `false` | Specifies whether the library should throw an error if all lines do not have the same number of words.
+Option           | Default  | Description
+-----------------|----------|-------------------------------------------------------------------------------------------------------
+`alignmentError` | `false`  | Specifies whether the library should throw an error if all lines do not have the same number of words.
+`separator`      | `spaces` | Specifies whether words should be aligned using spaces or tabs. Allowed values: `spaces`, `tabs`.
 
 [actions]:   https://github.com/digitallinguistics/word-aligner/actions?query=workflow%3Atest
 [GitHub]:    https://github.com/digitallinguistics/word-aligner
