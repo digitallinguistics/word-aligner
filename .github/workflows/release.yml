@@ -1,0 +1,44 @@
+name: release
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  publish:
+    name:    publish
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: set up Node for npm
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          registry-url: https://registry.npmjs.org/
+
+      - name: install dependencies
+        run:  npm ci
+
+      - name: run tests
+        run:  npm test
+
+      - name: publish to npm
+        run:  npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: set up Node for GitHub
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          registry-url: https://npm.pkg.github.com
+          scope:        '@digitallinguistics'
+
+      - name: publish to GitHub Package Registry
+        run:  npm publish
+        env:
+            NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
