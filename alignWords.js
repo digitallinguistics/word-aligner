@@ -4,7 +4,10 @@
 
 function alignWords(lines, options = {}) {
 
-  const { alignmentError = false } = options;
+  const {
+    alignmentError = false,
+    separator      = `spaces`,
+  } = options;
 
   const whiteSpaceRegExp = /\s+/gu;
 
@@ -28,22 +31,30 @@ function alignWords(lines, options = {}) {
 
   const longestLine = lines[indexOfLongestLine];
 
-  longestLine.forEach((word, i) => {
+  if (separator === `tabs`) {
 
-    const longestWordLength = lines.reduce((len, line) => {
-      if (!line[i]) return len;
-      if (line[i].length > len) return line[i].length;
-      return len;
-    }, 0);
+    lines = lines.map(line => line.join(`\t`).trim());
 
-    lines.forEach(words => {
-      if (!words[i]) return;
-      words[i] = words[i].padEnd(longestWordLength);
+  } else {
+
+    longestLine.forEach((word, i) => {
+
+      const longestWordLength = lines.reduce((len, line) => {
+        if (!line[i]) return len;
+        if (line[i].length > len) return line[i].length;
+        return len;
+      }, 0);
+
+      lines.forEach(words => {
+        if (!words[i]) return;
+        words[i] = words[i].padEnd(longestWordLength);
+      });
+
     });
 
-  });
+    lines = lines.map(line => line.join(` `).trim());
 
-  lines = lines.map(line => line.join(` `).trim());
+  }
 
   return lines;
 
