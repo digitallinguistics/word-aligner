@@ -33,4 +33,18 @@ describe(`alignWords`, function() {
 
   });
 
+  it(`option: alignmentError`, function() {
+
+    const lines = [
+      `waxdungu qasi qapx cuyi`,
+      `waxt-qungu qasi`,
+      `day-one man`,
+    ];
+
+    const runTest = () => alignWords(lines, { alignmentError: true });
+
+    expect(runTest).to.throwError(`AlignmentError`);
+
+  });
+
 });
