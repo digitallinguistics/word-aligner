@@ -1,37 +1,46 @@
-## Welcome to GitHub Pages
+# word-aligner
 
-You can use the [editor on GitHub](https://github.com/digitallinguistics/word-aligner/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+_word-aligner_ is a small JavaScript utility (Node / browser) for vertically aligning words in an interlinear gloss (or any multi-line format).
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+[Click here to open an issue on GitHub.][new-issue]
 
-### Markdown
+## Basic Usage
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Install the library using npm or yarn:
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```cmd
+npm i @digitallinguistics/word-aligner
+yarn add @digitallinguistics/word-aligner
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Import the module:
 
-### Jekyll Themes
+```js
+import alignWords from '@digitallinguistics/word-aligner';
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/digitallinguistics/word-aligner/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Run the utility on an array of the lines you'd like to vertically align:
 
-### Support or Contact
+```js
+const lines = [
+  `waxdungu qasi`,
+  `waxt-qungu qasi`,
+  `day-one man`,
+];
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+const aligned = alignWords(lines);
+```
+
+The value of the `aligned` variable will be:
+
+```txt
+[
+  "waxdungu   qasi",
+  "waxt-qungu qasi",
+  "day-one    man"
+]
+```
+
+**Note:** _word-aligner_ does _not_ do automatic line detection. It will not know what type of line you are handing it (morphemes, glosses, translation, etc.). Only provide the lines you actually want aligned. Usually this means you will not provide a free translation line.
+
+[new-issue]: https://github.com/digitallinguistics/word-aligner/issues/new
