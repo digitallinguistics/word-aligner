@@ -22,8 +22,11 @@
     "type": "git",
     "url": "https://github.com/digitallinguistics/word-aligner.git"
   },
+  "type": "module",
   "main": "alignWords.js",
-  "scripts": {},
+  "scripts": {
+    "test": "mocha alignWords.test.js"
+  },
   "publishConfig": {
     "access": "public"
   },
