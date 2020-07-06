@@ -2,13 +2,23 @@
   no-param-reassign,
 */
 
-function alignWords(lines) {
+function alignWords(lines, options = {}) {
+
+  const { alignmentError = false } = options;
 
   const whiteSpaceRegExp = /\s+/gu;
 
   lines = Array.from(lines);
   lines = lines.map(line => line.trim());
   lines = lines.map(line => line.split(whiteSpaceRegExp));
+
+  if (alignmentError === true) {
+
+    const sameLength = lines.every(line => line.length === lines[0].length);
+
+    if (!sameLength) throw new Error(`AlignmentError`);
+
+  }
 
   const indexOfLongestLine = lines.reduce((longestIndex, line, i) => {
     if (!line.length) return longestIndex;
