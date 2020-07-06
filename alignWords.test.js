@@ -71,6 +71,30 @@ describe(`alignWords`, function() {
 
   });
 
+  it(`option: groupWith`, function() {
+
+    const lines = [
+      `waxdungu qasi {qapx cuyi}`,
+      `waxt-qungu qasi {qapx cuy-i}`,
+      `day-one man he.came`,
+    ];
+
+    const expectedResult = [
+      `waxdungu   qasi {qapx cuyi}`,
+      `waxt-qungu qasi {qapx cuy-i}`,
+      `day-one    man  he.came`,
+    ];
+
+    const aligned = alignWords(lines, { groupWith: `{}` });
+
+    aligned.forEach((line, i) => {
+
+      expect(line).to.be(expectedResult[i]);
+
+    });
+
+  });
+
   it(`option: separator`, function() {
 
     const lines = [
