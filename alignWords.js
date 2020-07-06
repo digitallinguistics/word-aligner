@@ -6,14 +6,27 @@ function alignWords(lines, options = {}) {
 
   const {
     alignmentError = false,
+    groupWith      = `[]`,
     separator      = `spaces`,
   } = options;
 
-  const whiteSpaceRegExp = /\s+/gu;
+  const [leftBracket, rightBracket] = groupWith.trim().split(``);
+
+  let wordRegExp = /(?<bracketed>\[.*?\])|(?<unbracketed>[^\s]+)/gu;
+
+  if (groupWith !== `[]`) {
+
+    const pattern = wordRegExp.source
+    .replace(`\\[`, `\\${leftBracket}`)
+      .replace(`\\]`, `\\${rightBracket}`);
+
+    wordRegExp = new RegExp(pattern, `gu`);
+
+  }
 
   lines = Array.from(lines);
   lines = lines.map(line => line.trim());
-  lines = lines.map(line => line.split(whiteSpaceRegExp));
+  lines = lines.map(line => [...line.matchAll(wordRegExp)].map(([match]) => match));
 
   if (alignmentError === true) {
 

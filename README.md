@@ -53,8 +53,9 @@ The value of the `aligned` variable will be:
 ## Options
 
 Option           | Default  | Description
------------------|----------|-------------------------------------------------------------------------------------------------------
+-----------------|----------|------------
 `alignmentError` | `false`  | Specifies whether the library should throw an error if all lines do not have the same number of words.
+`groupWith`      | `[]`     | Specifies a pair of characters to use to group words together in a line. Any words enclosed by these characters will be treated as a single word by the library.
 `separator`      | `spaces` | Specifies whether words should be aligned using spaces or tabs. Allowed values: `spaces`, `tabs`.
 
 [actions]:   https://github.com/digitallinguistics/word-aligner/actions?query=workflow%3Atest
