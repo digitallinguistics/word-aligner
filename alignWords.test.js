@@ -18,9 +18,9 @@ describe(`alignWords`, function() {
     ];
 
     const expectedResult = [
-      'waxdungu   qasi',
-      'waxt-qungu qasi',
-      'day-one    man',
+      `waxdungu   qasi`,
+      `waxt-qungu qasi`,
+      `day-one    man`,
     ];
 
     const aligned = alignWords(lines);
@@ -44,6 +44,30 @@ describe(`alignWords`, function() {
     const runTest = () => alignWords(lines, { alignmentError: true });
 
     expect(runTest).to.throwError(`AlignmentError`);
+
+  });
+
+  it(`option: separator`, function() {
+
+    const lines = [
+      `waxdungu qasi`,
+      `waxt-qungu qasi`,
+      `day-one man`,
+    ];
+
+    const expectedResult = [
+      `waxdungu\tqasi`,
+      `waxt-qungu\tqasi`,
+      `day-one\tman`,
+    ];
+
+    const aligned = alignWords(lines, { separator: `tabs` });
+
+    aligned.forEach((line, i) => {
+
+      expect(line).to.be(expectedResult[i]);
+
+    });
 
   });
 
