@@ -1,0 +1,25 @@
+name:        '@digitallinguistics/word-aligner'
+version:     0.1.0
+description: A JavaScript (Node/browser) utility for vertically aligning words
+keywords:
+  - Digital Linguistics
+  - DLx
+  - linguistics
+  - interlinear gloss
+  - corpus linguistics
+homepage: https://developer.digitallinguistics.io/word-aligner/
+bugs:
+  url: https://github.com/digitallinguistics/word-aligner/issues
+license: MIT
+author:
+  name: Daniel W. Hieber
+  url:  https://danielhieber.com
+repository:
+  type: git
+  url:  https://github.com/digitallinguistics/word-aligner.git
+main: alignWords.js
+scripts:
+publishConfig:
+  access: public
+engines:
+  node: 14.x
