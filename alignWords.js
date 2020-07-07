@@ -18,7 +18,7 @@ function alignWords(lines, options = {}) {
 
     const pattern = wordRegExp.source
     .replace(`\\[`, `\\${leftBracket}`)
-      .replace(`\\]`, `\\${rightBracket}`);
+    .replace(`\\]`, `\\${rightBracket}`);
 
     wordRegExp = new RegExp(pattern, `gu`);
 
@@ -36,19 +36,19 @@ function alignWords(lines, options = {}) {
 
   }
 
-  const indexOfLongestLine = lines.reduce((longestIndex, line, i) => {
-    if (!line.length) return longestIndex;
-    if (line.length > longestIndex) return i;
-    return longestIndex;
-  }, 0);
-
-  const longestLine = lines[indexOfLongestLine];
-
   if (separator === `tabs`) {
 
     lines = lines.map(line => line.join(`\t`).trim());
 
   } else {
+
+    const indexOfLongestLine = lines.reduce((longestIndex, line, i) => {
+      if (!line.length) return longestIndex;
+      if (line.length > longestIndex) return i;
+      return longestIndex;
+    }, 0);
+
+    const longestLine = lines[indexOfLongestLine];
 
     longestLine.forEach((word, i) => {
 
@@ -64,7 +64,8 @@ function alignWords(lines, options = {}) {
         const w = words[i];
         if (!w) return;
         const charLength = getCharLength(w);
-        words[i] = w.padEnd(longestWordLength + (w.length - charLength));
+        const padLength  = longestWordLength + (w.length - charLength);
+        words[i] = w.padEnd(padLength);
       });
 
     });
