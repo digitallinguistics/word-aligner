@@ -33,6 +33,28 @@ describe(`alignWords`, function() {
 
   });
 
+  it.only(`aligns by character length`, function() {
+
+    const lines = [
+      `t̓aatn̓a ʔunaakʔaɬ`,
+      `children they.have`,
+    ];
+
+    const expectedResult = [
+      `t̓aatn̓a   ʔunaakʔaɬ`,
+      `children they.have`,
+    ];
+
+    const aligned = alignWords(lines);
+
+    aligned.forEach((line, i) => {
+
+      expect(line).to.be(expectedResult[i]);
+
+    });
+
+  });
+
   it(`groups words with [brackets]`, function() {
 
     const lines = [
