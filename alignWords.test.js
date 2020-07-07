@@ -58,15 +58,15 @@ describe(`alignWords`, function() {
   it.only(`groups words with [brackets]`, function() {
 
     const lines = [
-      `waxdungu qasi [qapx cuyi] [come]-aaxi`,
-      `waxt-qungu qasi [qapx cuy-i] come-qix-i`,
-      `day-one man he.came he.came`,
+      `word word [word word] [stem]-suffix prefix-[word word] [word word],`,
+      `m-m m [m m-m] [m]-m m-[m m] [m m]`,
+      `gl-gl gl gl gl-gl gl-[gl gl] gl`,
     ];
 
     const expectedResult = [
-      `waxdungu   qasi [qapx cuyi]  [come]-aaxi`,
-      `waxt-qungu qasi [qapx cuy-i] come-qix-i`,
-      `day-one    man  he.came      he.came`,
+      `word  word [word word] [stem]-suffix prefix-[word word] [word word],`,
+      `m-m   m    [m m-m]     [m]-m         m-[m m]            [m m]`,
+      `gl-gl gl   gl          gl-gl         gl-[gl gl]         gl`,
     ];
 
     const aligned = alignWords(lines);
