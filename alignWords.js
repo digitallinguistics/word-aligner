@@ -53,14 +53,18 @@ function alignWords(lines, options = {}) {
     longestLine.forEach((word, i) => {
 
       const longestWordLength = lines.reduce((len, line) => {
-        if (!line[i]) return len;
-        if (line[i].length > len) return line[i].length;
+        const w = line[i];
+        if (!w) return len;
+        const charLength = getCharLength(w);
+        if (charLength > len) return charLength;
         return len;
       }, 0);
 
       lines.forEach(words => {
-        if (!words[i]) return;
-        words[i] = words[i].padEnd(longestWordLength);
+        const w = words[i];
+        if (!w) return;
+        const charLength = getCharLength(w);
+        words[i] = w.padEnd(longestWordLength + (w.length - charLength));
       });
 
     });
@@ -70,6 +74,24 @@ function alignWords(lines, options = {}) {
   }
 
   return lines;
+
+}
+
+/**
+ * Gets the length of a string in characters rather than unicode points
+ * @param  {String}  str The string to find the length of
+ * @return {Integer}     The character length of the string
+ */
+function getCharLength(str) {
+
+  // search for non-combining character followed by combining character
+  const combiningRegExp = /(?<char>\P{Mark})(?<combiner>\p{Mark}+)/gu;
+
+  // remove combining characters
+  str = str.replace(combiningRegExp, `$1`);
+
+  // get length, accounting for surrogate pairs
+  return Array.from(str).length;
 
 }
 

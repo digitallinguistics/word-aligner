@@ -36,13 +36,13 @@ describe(`alignWords`, function() {
   it.only(`aligns by character length`, function() {
 
     const lines = [
-      `t̓aatn̓a ʔunaakʔaɬ`,
-      `children they.have`,
+      `cafȩ́ word t̓aatn̓a ʔunaakʔaɬ`,
+      `a word children they.have`,
     ];
 
     const expectedResult = [
-      `t̓aatn̓a   ʔunaakʔaɬ`,
-      `children they.have`,
+      `cafȩ́ word t̓aatn̓a   ʔunaakʔaɬ`,
+      `a    word children they.have`,
     ];
 
     const aligned = alignWords(lines);
