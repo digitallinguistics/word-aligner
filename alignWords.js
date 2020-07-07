@@ -12,7 +12,7 @@ function alignWords(lines, options = {}) {
 
   const [leftBracket, rightBracket] = groupWith.trim().split(``);
 
-  let wordRegExp = /(?<bracketed>\[.*?\])|(?<unbracketed>[^\s]+)/gu;
+  let wordRegExp = /(?<bracketed>\S*\[.*?\]\S*)|(?<unbracketed>\S+)/gu;
 
   if (groupWith !== `[]`) {
 

@@ -33,7 +33,7 @@ describe(`alignWords`, function() {
 
   });
 
-  it.only(`aligns by character length`, function() {
+  it(`aligns by character length`, function() {
 
     const lines = [
       `cafȩ́ word t̓aatn̓a ʔunaakʔaɬ`,
@@ -55,21 +55,23 @@ describe(`alignWords`, function() {
 
   });
 
-  it(`groups words with [brackets]`, function() {
+  it.only(`groups words with [brackets]`, function() {
 
     const lines = [
-      `waxdungu qasi [qapx cuyi]`,
-      `waxt-qungu qasi [qapx cuy-i]`,
-      `day-one man he.came`,
+      `word word [word word] [stem]-suffix prefix-[word word] [word word],`,
+      `m-m m [m m-m] [m]-m m-[m m] [m m]`,
+      `gl-gl gl gl gl-gl gl-[gl gl] gl`,
     ];
 
     const expectedResult = [
-      `waxdungu   qasi [qapx cuyi]`,
-      `waxt-qungu qasi [qapx cuy-i]`,
-      `day-one    man  he.came`,
+      `word  word [word word] [stem]-suffix prefix-[word word] [word word],`,
+      `m-m   m    [m m-m]     [m]-m         m-[m m]            [m m]`,
+      `gl-gl gl   gl          gl-gl         gl-[gl gl]         gl`,
     ];
 
     const aligned = alignWords(lines);
+
+    console.log(JSON.stringify(aligned, null, 2));
 
     aligned.forEach((line, i) => {
 
