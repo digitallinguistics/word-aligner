@@ -55,7 +55,7 @@ describe(`alignWords`, function() {
 
   });
 
-  it.only(`groups words with [brackets]`, function() {
+  it(`groups words with [brackets]`, function() {
 
     const lines = [
       `word word [word word] [stem]-suffix prefix-[word word] [word word],`,
@@ -70,8 +70,6 @@ describe(`alignWords`, function() {
     ];
 
     const aligned = alignWords(lines);
-
-    console.log(JSON.stringify(aligned, null, 2));
 
     aligned.forEach((line, i) => {
 
