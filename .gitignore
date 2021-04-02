@@ -104,5 +104,4 @@ dist
 .tern-port
 
 # Custom
-.eslintrc.yml
 nodemon.json
