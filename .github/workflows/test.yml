@@ -6,7 +6,7 @@ on:
     branches:
       - master
   schedule:
-    - cron: '10 16 * * 5' # run weekly on Friday @ 4:10 PM
+    - cron: '15 16 * * 5' # run weekly on Friday @ 4:15 PM
 
 jobs:
   run-tests:
