@@ -20,7 +20,15 @@ jobs:
           node-version: 14.x
           registry-url: https://registry.npmjs.org/
 
+      - name: cache Node modules
+        id:   cache-node-modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key:  ${{ hashFiles('**/package-lock.json') }}
+
       - name: install dependencies
+        if:   steps.cache.outputs.cache-hit != 'true'
         run:  npm ci
 
       - name: run tests
