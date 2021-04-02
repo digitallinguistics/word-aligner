@@ -4,8 +4,19 @@
   prefer-arrow-callback,
 */
 
-import alignWords from './alignWords.js';
-import expect     from 'expect.js';
+import alignWords                 from './alignWords.js';
+import expect                     from 'expect.js';
+import { fileURLToPath }          from 'url';
+import { promises as fsPromises } from 'fs';
+
+import {
+  dirname as getDirname,
+  join as joinPath,
+} from 'path';
+
+const { readFile } = fsPromises;
+
+const currentDir = getDirname(fileURLToPath(import.meta.url));
 
 describe(`alignWords`, function() {
 
@@ -139,6 +150,18 @@ describe(`alignWords`, function() {
 
     });
 
+  });
+
+});
+
+describe(`package`, () => {
+
+  it(`has the correct year in the license`, async function() {
+    const licensePath = joinPath(currentDir, `./LICENSE`);
+    const licenseText = await readFile(licensePath, `utf8`);
+    const [year]      = licenseText.match(/2[0-9]{3}/u);
+    const currentYear = new Date().getFullYear();
+    expect(year).to.eql(currentYear);
   });
 
 });
