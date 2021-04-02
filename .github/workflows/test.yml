@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - master
+  schedule:
+    - cron: '10 16 * * 5' # run weekly on Friday @ 4:10 PM
 
 jobs:
   run-tests:
