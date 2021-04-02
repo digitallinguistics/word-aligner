@@ -5,7 +5,7 @@
 */
 
 import alignWords                 from './alignWords.js';
-import expect                     from 'expect.js';
+import { expect }                 from 'chai';
 import { fileURLToPath }          from 'url';
 import { promises as fsPromises } from 'fs';
 
@@ -38,7 +38,7 @@ describe(`alignWords`, function() {
 
     aligned.forEach((line, i) => {
 
-      expect(line).to.be(expectedResult[i]);
+      expect(line).to.equal(expectedResult[i]);
 
     });
 
@@ -60,7 +60,7 @@ describe(`alignWords`, function() {
 
     aligned.forEach((line, i) => {
 
-      expect(line).to.be(expectedResult[i]);
+      expect(line).to.equal(expectedResult[i]);
 
     });
 
@@ -84,7 +84,7 @@ describe(`alignWords`, function() {
 
     aligned.forEach((line, i) => {
 
-      expect(line).to.be(expectedResult[i]);
+      expect(line).to.equal(expectedResult[i]);
 
     });
 
@@ -100,7 +100,7 @@ describe(`alignWords`, function() {
 
     const runTest = () => alignWords(lines, { alignmentError: true });
 
-    expect(runTest).to.throwError(`AlignmentError`);
+    expect(runTest).to.throw(`AlignmentError`);
 
   });
 
@@ -122,7 +122,7 @@ describe(`alignWords`, function() {
 
     aligned.forEach((line, i) => {
 
-      expect(line).to.be(expectedResult[i]);
+      expect(line).to.equal(expectedResult[i]);
 
     });
 
@@ -146,7 +146,7 @@ describe(`alignWords`, function() {
 
     aligned.forEach((line, i) => {
 
-      expect(line).to.be(expectedResult[i]);
+      expect(line).to.equal(expectedResult[i]);
 
     });
 
@@ -160,7 +160,7 @@ describe(`package`, () => {
     const licensePath = joinPath(currentDir, `./LICENSE`);
     const licenseText = await readFile(licensePath, `utf8`);
     const [year]      = licenseText.match(/2[0-9]{3}/u);
-    const currentYear = new Date().getFullYear();
+    const currentYear = new Date().getFullYear().toString();
     expect(year).to.eql(currentYear);
   });
 

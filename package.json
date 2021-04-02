@@ -34,8 +34,8 @@
     "node": "14.x"
   },
   "devDependencies": {
+    "chai": "^4.3.4",
     "eslint": "^7.23.0",
-    "expect.js": "^0.3.1",
     "mocha": "^8.3.2"
   }
 }
