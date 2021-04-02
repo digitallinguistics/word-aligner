@@ -1,7 +1,3 @@
-/* eslint-disable
-  no-param-reassign,
-*/
-
 function alignWords(lines, options = {}) {
 
   const {
