@@ -62,7 +62,7 @@ Option           | Default  | Description
 [actions]:   https://github.com/digitallinguistics/word-aligner/actions?query=workflow%3Atest
 [GitHub]:    https://github.com/digitallinguistics/word-aligner
 [issues]:    https://github.com/digitallinguistics/word-aligner/issues
-[license]:   https://github.com/digitallinguistics/word-aligner/blob/master/LICENSE
+[license]:   https://github.com/digitallinguistics/word-aligner/blob/main/LICENSE
 [new-issue]: https://github.com/digitallinguistics/word-aligner/issues/new
 [npm]:       https://www.npmjs.com/package/@digitallinguistics/word-aligner
 [releases]:  https://github.com/digitallinguistics/word-aligner/releases

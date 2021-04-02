@@ -4,9 +4,9 @@ on:
   pull_request:
   push:
     branches:
-      - master
+      - main
   schedule:
-    - cron: '15 16 * * 5' # run weekly on Friday @ 4:15 PM
+    - cron: '18 16 * * 5' # run weekly on Friday @ 4:18 PM
 
 jobs:
   run-tests:
